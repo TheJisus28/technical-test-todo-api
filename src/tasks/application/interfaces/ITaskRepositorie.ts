@@ -4,8 +4,8 @@ import { Filters } from "../dtos/Filters.js";
 import { ITask } from "../../domain/entities/ITaks.js";
 
 export interface ITaskRepositorie {
-  create(data: CreateTaskDTO): Promise<ITask>;
+  save(data: ITask): Promise<void>;
   update(data: UpdateTaskDTO): Promise<ITask>;
   delete(id: string): Promise<void>;
-  find(filters?: Filters): Promise<ITask[]>;
+  listTasks(filters?: Filters): Promise<ITask[]>;
 }
