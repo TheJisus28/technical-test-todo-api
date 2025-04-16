@@ -1,9 +1,9 @@
-import InMemoryTaskRepository from "../../../../src/tasks/infrastructure/InMemoryRepositorie";
-import { ITask } from "../../../../src/tasks/domain/entities/ITaks";
-import { CreateTaskDTO } from "../../../../src/tasks/application/dtos/CreateTaskDTO";
-import { UpdateTaskDTO } from "../../../../src/tasks/application/dtos/UpdateTaskDTO";
-import { Filters } from "../../../../src/tasks/application/dtos/Filters";
-import { TaskStatus } from "../../../../src/tasks/domain/enums/TaskStatus";
+import InMemoryTaskRepository from "../../../../../src/tasks/infrastructure/persistance/InMemoryRepositorie";
+import { ITask } from "../../../../../src/tasks/domain/entities/ITaks";
+import { CreateTaskDTO } from "../../../../../src/tasks/application/dtos/CreateTaskDTO";
+import { UpdateTaskDTO } from "../../../../../src/tasks/application/dtos/UpdateTaskDTO";
+import { Filters } from "../../../../../src/tasks/application/dtos/Filters";
+import { TaskStatus } from "../../../../../src/tasks/domain/enums/TaskStatus";
 
 describe("InMemoryTaskRepository", () => {
   let repository: InMemoryTaskRepository;
