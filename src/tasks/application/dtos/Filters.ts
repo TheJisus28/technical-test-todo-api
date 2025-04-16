@@ -1,4 +1,4 @@
-import { TaskStatus } from "../enums/TaskStatus.js";
+import { TaskStatus } from "../../domain/enums/TaskStatus.js";
 
 export interface Filters {
   status?: TaskStatus;

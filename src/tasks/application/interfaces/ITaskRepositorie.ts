@@ -1,7 +1,7 @@
 import { CreateTaskDTO } from "../dtos/CreateTaskDTO.js";
 import { UpdateTaskDTO } from "../dtos/UpdateTaskDTO.js";
 import { Filters } from "../dtos/Filters.js";
-import { ITask } from "../entities/ITaks.js";
+import { ITask } from "../../domain/entities/ITaks.js";
 
 export interface ITaskRepositorie {
   create(data: CreateTaskDTO): Promise<ITask>;
