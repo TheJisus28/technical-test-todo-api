@@ -1,22 +1,20 @@
 // src/server.ts
-import express, { Request, Response } from "express";
+import express from "express";
 import swaggerUi from "swagger-ui-express";
 import yaml from "js-yaml";
 import fs from "fs";
+import taskRouter from "./tasks/presentation/routes/TaskRouter.js"; // Import task router
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); // Middleware to parse JSON request bodies
 
 const swaggerDocument = yaml.load(
   fs.readFileSync("./swagger.yaml", "utf8")
 ) as Record<string, any>;
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument)); // Swagger UI for API documentation
 
-// Endpoint de prueba
-app.get("/test", (req: Request, res: Response) => {
-  res.send("Hello from Express with TypeScript!");
-});
+app.use("/api", taskRouter); // Mount task router under the /api path
 
 export default app;

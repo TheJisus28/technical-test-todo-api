@@ -23,7 +23,7 @@ export class CreateTaskUseCase implements ICreateTaskUseCase {
       return task;
     } catch (error: Error | any) {
       // Handle any errors that occur during task creation
-      console.error("Error creating task:", error.message);
+      //      console.error("Error creating task:", error.message);
 
       // Re-throw the error to be handled by the caller
       throw error;

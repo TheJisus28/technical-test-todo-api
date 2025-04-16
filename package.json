@@ -8,7 +8,9 @@
     "dev": "tsx --watch src/index.ts",
     "build": "pkgroll",
     "start": "node dist/index.mjs",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "test:unit": "jest tests/unit --verbose",
+    "test:e2e": "jest tests/e2e --verbose"
   },
   "keywords": [
     "node.js",
