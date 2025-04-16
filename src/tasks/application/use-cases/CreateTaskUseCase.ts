@@ -1,9 +1,10 @@
 import { ITask } from "../../domain/entities/ITaks.js";
 import { Task } from "../../domain/entities/Task.js";
 import { CreateTaskDTO } from "../dtos/CreateTaskDTO.js";
+import { ICreateTaskUseCase } from "../interfaces/ICreateTaskUseCase.js";
 import { ITaskRepositorie } from "../interfaces/ITaskRepositorie.js";
 
-export class CreateTaskUseCase {
+export class CreateTaskUseCase implements ICreateTaskUseCase {
   constructor(private taskRepository: ITaskRepositorie) {}
 
   async execute(data: CreateTaskDTO): Promise<ITask> {

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { CreateTaskUseCase } from "../../application/use-cases/CreateTaskUseCase.js";
 import { CreateTaskDTO } from "../../application/dtos/CreateTaskDTO.js";
+import { ICreateTaskUseCase } from "../../application/interfaces/ICreateTaskUseCase.js";
 
 export class TaskController {
-  private readonly createTaskUseCase: CreateTaskUseCase;
+  private readonly createTaskUseCase: ICreateTaskUseCase;
 
-  constructor(createTaskUseCase: CreateTaskUseCase) {
+  constructor(createTaskUseCase: ICreateTaskUseCase) {
     this.createTaskUseCase = createTaskUseCase;
   }
 
