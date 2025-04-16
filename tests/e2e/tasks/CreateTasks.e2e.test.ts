@@ -31,7 +31,9 @@ describe("POST /api/tasks", () => {
       .expect(400);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.body.message).toBe("Title and description are required"); // Ensure the error message matches your use case
+    expect(response.body.message).toBe("Title is required"); // Updated error message
+    expect(response.body).toHaveProperty("errorCode");
+    expect(response.body.errorCode).toBe("TASK_CREATE_MISSING_TITLE"); // Check for the specific error code
   });
 
   it("should return 400 if description is missing", async () => {
@@ -45,6 +47,8 @@ describe("POST /api/tasks", () => {
       .expect(400);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.body.message).toBe("Title and description are required"); // Ensure the error message matches your use case
+    expect(response.body.message).toBe("Description is required"); // Updated error message
+    expect(response.body).toHaveProperty("errorCode");
+    expect(response.body.errorCode).toBe("TASK_CREATE_MISSING_DESCRIPTION"); // Check for the specific error code
   });
 });

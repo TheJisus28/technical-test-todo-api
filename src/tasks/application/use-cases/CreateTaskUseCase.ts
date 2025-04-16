@@ -3,15 +3,25 @@ import { Task } from "../../domain/entities/Task.js";
 import { CreateTaskDTO } from "../dtos/CreateTaskDTO.js";
 import { ICreateTaskUseCase } from "../interfaces/ICreateTaskUseCase.js";
 import { ITaskRepositorie } from "../interfaces/ITaskRepositorie.js";
+import { BadRequestError } from "../../../shared/errors/BadRquestError.js";
 
 export class CreateTaskUseCase implements ICreateTaskUseCase {
   constructor(private taskRepository: ITaskRepositorie) {}
 
   async execute(data: CreateTaskDTO): Promise<ITask> {
     try {
-      // Validate the input data
-      if (!data.title || !data.description) {
-        throw new Error("Title and description are required");
+      // Validate the input data using custom errors
+      if (!data.title) {
+        throw new BadRequestError(
+          "Title is required",
+          "TASK_CREATE_MISSING_TITLE"
+        );
+      }
+      if (!data.description) {
+        throw new BadRequestError(
+          "Description is required",
+          "TASK_CREATE_MISSING_DESCRIPTION"
+        );
       }
 
       // Create a new task instance
@@ -22,10 +32,7 @@ export class CreateTaskUseCase implements ICreateTaskUseCase {
 
       return task;
     } catch (error: Error | any) {
-      // Handle any errors that occur during task creation
-      //      console.error("Error creating task:", error.message);
-
-      // Re-throw the error to be handled by the caller
+      // Re-throw the error, it will be caught by the error handler middleware
       throw error;
     }
   }
