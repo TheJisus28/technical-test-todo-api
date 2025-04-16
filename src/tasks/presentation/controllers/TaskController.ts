@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express"; // Importa NextFunction
 import { CreateTaskDTO } from "../../application/dtos/CreateTaskDTO.js";
 import { ICreateTaskUseCase } from "../../application/interfaces/ICreateTaskUseCase.js";
 
@@ -9,13 +9,18 @@ export class TaskController {
     this.createTaskUseCase = createTaskUseCase;
   }
 
-  async createTask(req: Request, res: Response): Promise<Response> {
+  public async createTask(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response | void> {
+    // Añade next y cambia el tipo de retorno
     try {
       const createTaskDTO: CreateTaskDTO = req.body;
       const newTask = await this.createTaskUseCase.execute(createTaskDTO);
       return res.status(201).json(newTask);
     } catch (error: any) {
-      return res.status(400).json({ message: error.message });
+      next(error);
     }
   }
 }
