@@ -1,6 +1,5 @@
 import request from "supertest";
-import app from "../../../src/server"; // Adjust the import path as needed
-import { ITask } from "../../../src/tasks/domain/entities/ITaks"; // Adjust the import path as needed
+import app from "../../../src/server";
 
 describe("POST /api/tasks", () => {
   it("should create a new task and return 201 with the created task", async () => {
