@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  title: Task Management API (To-Do)
+  version: 1.0.0
+  description: API documentation for task management (To-Do).
+paths:
+  /test:
+    get:
+      summary: Test endpoint.
+      responses:
+        "200":
+          description: Test message.
+          content:
+            text/plain:
+              example: Hello from Express with TypeScript!

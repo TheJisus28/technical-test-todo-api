@@ -1,0 +1,50 @@
+{
+  "name": "todo-api-challenge",
+  "version": "1.0.0",
+  "main": "dist/index.mjs",
+  "type": "module",
+  "exports": "./dist/index.mjs",
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "build": "pkgroll",
+    "start": "node dist/index.mjs",
+    "test": "jest"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "typescript",
+    "rest-api",
+    "todo",
+    "task-management",
+    "swagger",
+    "jest",
+    "api"
+  ],
+  "author": "Jesus Carrascal",
+  "license": "MIT",
+  "description": "RESTful API for managing tasks (To-Do list) as part of a technical challenge.",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.14.1",
+    "@types/supertest": "^6.0.3",
+    "@types/swagger-ui-express": "^4.1.8",
+    "jest": "^29.7.0",
+    "pkgroll": "^2.12.1",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.1",
+    "@types/uuid": "^10.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "js-yaml": "^4.1.0",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.1.0"
+  }
+}
