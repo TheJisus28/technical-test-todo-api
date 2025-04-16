@@ -3,7 +3,7 @@ import { UpdateTaskDTO } from "../../application/dtos/UpdateTaskDTO.js";
 import { ITaskRepositorie } from "../../application/interfaces/ITaskRepositorie.js";
 import { ITask } from "../../domain/entities/ITaks.js";
 
-class InMemoryTaskRepository implements ITaskRepositorie {
+export class InMemoryTaskRepository implements ITaskRepositorie {
   private tasks: ITask[] = []; // In-memory storage for tasks
 
   async save(data: ITask): Promise<void> {
