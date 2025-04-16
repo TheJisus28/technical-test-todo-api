@@ -5,13 +5,6 @@ const config: Config = {
   testEnvironment: "node",
   moduleFileExtensions: ["ts", "js", "json", "node"],
   testMatch: ["**/tests/**/*.test.ts"],
-  moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1",
-  },
-  transform: {
-    "^.+\\.tsx?$": "ts-jest",
-  },
-  extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
 
 export default config;
