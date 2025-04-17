@@ -14,7 +14,6 @@ export class TaskController {
     res: Response,
     next: NextFunction
   ): Promise<Response | void> {
-    // Añade next y cambia el tipo de retorno
     try {
       const createTaskDTO: CreateTaskDTO = req.body;
       const newTask = await this.createTaskUseCase.execute(createTaskDTO);
