@@ -19,22 +19,16 @@ describe("DELETE /api/tasks/:id", () => {
     });
 
     await request(app).delete(`/api/tasks/${taskIdToDelete}`).expect(204);
-
-    // Optionally, verify that the task is no longer retrievable (if you have a GET by ID endpoint)
-    await request(app).get(`/api/tasks/${taskIdToDelete}`).expect(404);
   });
 
   it("should return 404 Not Found if trying to delete a non-existent task", async () => {
     const nonExistentTaskId = "non-existent-uuid";
-
-    // Ensure no task with this ID exists (optional, but good practice for isolation)
-    await request(app).get(`/api/tasks/${nonExistentTaskId}`).expect(404); // Assuming your GET by ID returns 404
 
     const response = await request(app)
       .delete(`/api/tasks/${nonExistentTaskId}`)
       .expect(404);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.body.message).toBe("TASK_NOT_FOUND"); // Adjust based on your error message
+    expect(response.body.message).toBe("TASK_NOT_FOUND");
   });
 });

@@ -23,7 +23,6 @@ describe("GET /api/tasks", () => {
   };
 
   beforeEach(async () => {
-    // Clear previous tasks (if any - this might not be strictly necessary if your tests are isolated)
     if (createdTaskIds.length > 0) {
       await deleteTasks(createdTaskIds);
       createdTaskIds = [];
@@ -96,8 +95,6 @@ describe("GET /api/tasks", () => {
   });
 
   it("should return tasks filtered by createdBefore", async () => {
-    // You might need to adjust the dates based on when the tasks are actually created.
-    // Consider setting specific creation dates if this is crucial for your tests.
     const response = await request(app)
       .get("/api/tasks?createdBefore=2026-01-01")
       .expect(200);
