@@ -52,7 +52,7 @@ describe("PUT /api/tasks/:id", () => {
     expect(response.body).toHaveProperty(
       "message",
       "No data provided for update"
-    ); // Adjust based on your controller's error message
+    );
     expect(response.body).toHaveProperty("errorCode", "TASK_UPDATE_NO_DATA");
   });
 
