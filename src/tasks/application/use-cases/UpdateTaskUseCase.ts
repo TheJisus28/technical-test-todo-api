@@ -17,13 +17,13 @@ export class UpdateTaskUseCase implements IUpdateTaskUseCase {
       );
     }
 
-    // Verificar si la tarea existe
+    // Check if the task exists
     const existingTask = await this.taskRepository.findById(data.id);
     if (!existingTask) {
       throw new NotFoundError("TASK_NOT_FOUND");
     }
 
-    // Verificar si hay al menos un campo para actualizar (aparte del id)
+    // Ensure there's at least one field to update (besides the id)
     if (!data.title && !data.description && !data.status) {
       throw new BadRequestError(
         "No data provided for update",

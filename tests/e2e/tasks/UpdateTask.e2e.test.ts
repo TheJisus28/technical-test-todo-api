@@ -38,7 +38,7 @@ describe("PUT /api/tasks/:id", () => {
       .send(updatePayload)
       .expect(404);
 
-    expect(response.body).toHaveProperty("message", "TASK_NOT_FOUND"); // Adjust based on your error message
+    expect(response.body).toHaveProperty("message", "TASK_NOT_FOUND");
   });
 
   it("should return 400 Bad Request if the request body is empty (no data to update)", async () => {
@@ -53,7 +53,7 @@ describe("PUT /api/tasks/:id", () => {
       "message",
       "No data provided for update"
     ); // Adjust based on your controller's error message
-    expect(response.body).toHaveProperty("errorCode", "TASK_UPDATE_NO_DATA"); // Adjust based on your controller's error code
+    expect(response.body).toHaveProperty("errorCode", "TASK_UPDATE_NO_DATA");
   });
 
   it("should return 400 Bad Request if the title is not a string", async () => {
@@ -74,14 +74,14 @@ describe("PUT /api/tasks/:id", () => {
     expect(response.body).toHaveProperty(
       "errorCode",
       "TASK_UPDATE_INVALID_TITLE"
-    ); // Adjust based on your error code
+    );
   });
 
   it("should return 400 Bad Request if the description is not a string", async () => {
     const invalidPayload: UpdateTaskDTO = {
       id: createdTaskId,
       description: true as any,
-    }; // Include ID and invalid description
+    };
 
     const response = await request(app)
       .put(`/api/tasks/${createdTaskId}`)
@@ -95,14 +95,14 @@ describe("PUT /api/tasks/:id", () => {
     expect(response.body).toHaveProperty(
       "errorCode",
       "TASK_UPDATE_INVALID_DESCRIPTION"
-    ); // Adjust based on your error code
+    );
   });
 
   it("should return 400 Bad Request if the status is not a valid TaskStatus", async () => {
     const invalidPayload: UpdateTaskDTO = {
       id: createdTaskId,
       status: "INVALID_STATUS" as any,
-    }; // Include ID and invalid status
+    };
 
     const response = await request(app)
       .put(`/api/tasks/${createdTaskId}`)
@@ -116,6 +116,6 @@ describe("PUT /api/tasks/:id", () => {
     expect(response.body).toHaveProperty(
       "errorCode",
       "TASK_UPDATE_INVALID_STATUS"
-    ); // Adjust based on your error code
+    );
   });
 });
