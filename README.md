@@ -15,10 +15,8 @@ This project is a RESTful API for managing tasks (To-Do lists), developed as par
 ## Next Steps
 
 - Implement more advanced filtering and sorting options for task listing.
-- Implement proper error handling and standardized error response formats.
 - Consider adding authentication and authorization for API access.
 - Explore database integration (e.g., PostgreSQL, MongoDB) for persistent storage.
-- Implement integration tests to verify interactions between different layers of the application.
 - Add request validation using libraries like `express-validator`.
 - Implement logging for application monitoring.
 
