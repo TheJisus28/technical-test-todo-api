@@ -1,19 +1,25 @@
 import express, { Router, Request, Response, NextFunction } from "express";
 import { CreateTaskUseCase } from "../../application/use-cases/CreateTaskUseCase.js";
-import { InMemoryTaskRepository } from "../../infrastructure/persistance/InMemoryRepositorie.js";
+import { InMemoryTaskRepository } from "../../infrastructure/persistance/InMemoryRepository.js";
 import { TaskController } from "../controllers/TaskController.js";
 import asyncHandler from "../middelwares/AsyncHandler.js";
 import { ListTasksUseCase } from "../../application/use-cases/ListTasksUseCase.js";
+import { DeleteTaskUseCase } from "../../application/use-cases/DeleteTaskUseCase.js";
 
 // Setup repository
-const taskRepository = new InMemoryTaskRepository();
+const inMemoryTaskRepository = new InMemoryTaskRepository();
 
 // Setup use cases
-const createTaskUseCase = new CreateTaskUseCase(taskRepository);
-const listTasksUseCase = new ListTasksUseCase(taskRepository);
+const createTaskUseCase = new CreateTaskUseCase(inMemoryTaskRepository);
+const listTasksUseCase = new ListTasksUseCase(inMemoryTaskRepository);
+const deleteTaskUseCase = new DeleteTaskUseCase(inMemoryTaskRepository);
 
 // Setup controller
-const taskController = new TaskController(createTaskUseCase, listTasksUseCase);
+const taskController = new TaskController(
+  createTaskUseCase,
+  listTasksUseCase,
+  deleteTaskUseCase
+);
 
 // Define router
 const taskRouter: Router = express.Router();
@@ -31,6 +37,13 @@ taskRouter.get(
   "/tasks",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     await taskController.listTasks(req, res, next);
+  })
+);
+
+taskRouter.delete(
+  "/tasks/:id",
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    await taskController.deleteTask(req, res, next);
   })
 );
 

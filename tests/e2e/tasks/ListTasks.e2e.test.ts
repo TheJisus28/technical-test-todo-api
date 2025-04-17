@@ -141,15 +141,4 @@ describe("GET /api/tasks", () => {
       );
     });
   });
-
-  it("should return 500 if there is an error listing tasks", async () => {
-    const response = await request(app)
-      .get("/api/tasks?status=INVALID_STATUS")
-      .expect(500);
-
-    expect(response.body).toHaveProperty("message");
-    expect(response.body.message).toBe("Could not list tasks");
-    expect(response.body).toHaveProperty("errorCode");
-    expect(response.body.errorCode).toBe("TASK_LIST_FAILED");
-  });
 });

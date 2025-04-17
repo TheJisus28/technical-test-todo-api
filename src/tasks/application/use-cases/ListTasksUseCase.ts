@@ -2,10 +2,10 @@ import { InternalServerError } from "../../../shared/errors/InternalServerError.
 import { ITask } from "../../domain/entities/ITaks.js";
 import { Filters } from "../dtos/Filters.js";
 import { IListTasksUseCase } from "../interfaces/IListTasksUseCase.js";
-import { ITaskRepositorie } from "../interfaces/ITaskRepositorie.js";
+import { ITaskRepository } from "../interfaces/ITaskRepository.js";
 
 export class ListTasksUseCase implements IListTasksUseCase {
-  constructor(private readonly taskRepository: ITaskRepositorie) {}
+  constructor(private readonly taskRepository: ITaskRepository) {}
 
   async execute(filters: Filters): Promise<ITask[] | null> {
     try {

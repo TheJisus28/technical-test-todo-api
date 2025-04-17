@@ -1,4 +1,4 @@
-import InMemoryTaskRepository from "../../../../../src/tasks/infrastructure/persistance/InMemoryRepositorie";
+import InMemoryTaskRepository from "../../../../../src/tasks/infrastructure/persistance/InMemoryRepository";
 import { ITask } from "../../../../../src/tasks/domain/entities/ITaks";
 import { CreateTaskDTO } from "../../../../../src/tasks/application/dtos/CreateTaskDTO";
 import { UpdateTaskDTO } from "../../../../../src/tasks/application/dtos/UpdateTaskDTO";
