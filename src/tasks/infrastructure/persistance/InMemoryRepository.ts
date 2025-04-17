@@ -1,7 +1,7 @@
 import { Filters } from "../../application/dtos/Filters.js";
 import { UpdateTaskDTO } from "../../application/dtos/UpdateTaskDTO.js";
 import { ITaskRepository } from "../../application/interfaces/ITaskRepository.js";
-import { ITask } from "../../domain/entities/ITaks.js";
+import { ITask } from "../../domain/entities/ITask.js";
 
 export class InMemoryTaskRepository implements ITaskRepository {
   private tasks: ITask[] = []; // In-memory storage for tasks
@@ -55,6 +55,11 @@ export class InMemoryTaskRepository implements ITaskRepository {
     }
 
     return filteredTasks;
+  }
+
+  async findById(id: string): Promise<ITask | null> {
+    const task = this.tasks.find((task) => task.id === id);
+    return task || null;
   }
 }
 

@@ -1,4 +1,4 @@
-import { ITask } from "../../domain/entities/ITaks.js";
+import { ITask } from "../../domain/entities/ITask.js";
 import { Task } from "../../domain/entities/Task.js";
 import { CreateTaskDTO } from "../dtos/CreateTaskDTO.js";
 import { ICreateTaskUseCase } from "../interfaces/ICreateTaskUseCase.js";

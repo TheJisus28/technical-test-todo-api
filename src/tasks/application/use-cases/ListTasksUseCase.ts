@@ -1,5 +1,5 @@
 import { InternalServerError } from "../../../shared/errors/InternalServerError.js";
-import { ITask } from "../../domain/entities/ITaks.js";
+import { ITask } from "../../domain/entities/ITask.js";
 import { Filters } from "../dtos/Filters.js";
 import { IListTasksUseCase } from "../interfaces/IListTasksUseCase.js";
 import { ITaskRepository } from "../interfaces/ITaskRepository.js";

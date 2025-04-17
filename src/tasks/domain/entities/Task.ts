@@ -1,6 +1,6 @@
 import { UUIDGenrator } from "../../../shared/utils/UUIDGenerator.js";
 import { TaskStatus } from "../enums/TaskStatus.js";
-import { ITask } from "./ITaks.js";
+import { ITask } from "./ITask.js";
 
 export class Task implements ITask {
   id: string;

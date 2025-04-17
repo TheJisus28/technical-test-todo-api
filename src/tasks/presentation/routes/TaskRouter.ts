@@ -5,6 +5,7 @@ import { TaskController } from "../controllers/TaskController.js";
 import asyncHandler from "../middelwares/AsyncHandler.js";
 import { ListTasksUseCase } from "../../application/use-cases/ListTasksUseCase.js";
 import { DeleteTaskUseCase } from "../../application/use-cases/DeleteTaskUseCase.js";
+import { UpdateTaskUseCase } from "../../application/use-cases/UpdateTaskUseCase.js";
 
 // Setup repository
 const inMemoryTaskRepository = new InMemoryTaskRepository();
@@ -13,12 +14,14 @@ const inMemoryTaskRepository = new InMemoryTaskRepository();
 const createTaskUseCase = new CreateTaskUseCase(inMemoryTaskRepository);
 const listTasksUseCase = new ListTasksUseCase(inMemoryTaskRepository);
 const deleteTaskUseCase = new DeleteTaskUseCase(inMemoryTaskRepository);
+const updateTaskUseCase = new UpdateTaskUseCase(inMemoryTaskRepository);
 
 // Setup controller
 const taskController = new TaskController(
   createTaskUseCase,
   listTasksUseCase,
-  deleteTaskUseCase
+  deleteTaskUseCase,
+  updateTaskUseCase
 );
 
 // Define router
@@ -44,6 +47,13 @@ taskRouter.delete(
   "/tasks/:id",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     await taskController.deleteTask(req, res, next);
+  })
+);
+
+taskRouter.put(
+  "/tasks/:id",
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    await taskController.updateTask(req, res, next);
   })
 );
 

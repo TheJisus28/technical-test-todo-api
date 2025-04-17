@@ -1,4 +1,4 @@
-import { ITask } from "../../domain/entities/ITaks.js";
+import { ITask } from "../../domain/entities/ITask.js";
 import { Filters } from "../dtos/Filters.js";
 
 export interface IListTasksUseCase {
